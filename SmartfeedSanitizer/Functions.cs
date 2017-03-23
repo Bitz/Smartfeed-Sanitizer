@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using static System.Environment;
 using static System.String;
 
@@ -17,6 +18,7 @@ namespace SmartfeedSanitizer
                 input =
                     input.Replace(" ", Empty)
                         .Replace(NewLine, ",")
+                        .Replace("\n", ",")
                         .Replace("\"", Empty)
                         .Replace("'", Empty)
                         .Replace(":", ",");
@@ -25,9 +27,10 @@ namespace SmartfeedSanitizer
                 foreach (string set in sets)
                 {
                     int temp;
-                    if (Int32.TryParse(set, out temp))
+                    string resultString = Regex.Match(set, @"\d+").Value;                    
+                    if (Int32.TryParse(resultString, out temp))
                     {
-                        outp += set + ",";
+                        outp += resultString + ",";
                     }
                 }
                 outp = outp.TrimEnd(',');

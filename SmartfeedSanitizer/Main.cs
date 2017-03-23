@@ -35,14 +35,14 @@ namespace SmartfeedSanitizer
             inv.ShowDialog();
             outputTextbox.Text = inv.final;
         }
-
+         
         private void MainWindow_Activated(object sender, EventArgs e)
         {
-            if (inputTextBox.Text.Length == 0 || grabOnFocusCheckBox.Checked)
+            if (inputTextBox.Text.Length == 0 || (grabOnFocusCheckBox.Checked && Clipboard.ContainsText(TextDataFormat.Text)) )
             {
                 inputTextBox.Text = Clipboard.GetText();
             }
-            if (checkBox1.Checked)
+            if (checkBox1.Checked && (outputTextbox.Text.Length > 0))
             {
                 Clipboard.SetText(outputTextbox.Text);
             }

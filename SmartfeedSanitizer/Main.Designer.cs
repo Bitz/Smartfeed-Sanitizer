@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.invButton = new System.Windows.Forms.Button();
             this.copyToClipboard = new System.Windows.Forms.Button();
@@ -38,6 +39,13 @@
             this.TopToggle = new System.Windows.Forms.CheckBox();
             this.grabOnFocusCheckBox = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ShowContextMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.s = new System.Windows.Forms.ToolStripSeparator();
+            this.ExitContextMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.sanitizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // invButton
@@ -128,6 +136,54 @@
             this.checkBox1.Text = "Clipboard on Focus";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // notifyIcon
+            // 
+            this.notifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon.ContextMenuStrip = this.contextMenuStrip;
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "Smartfeed Sanitizer";
+            this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(0, 0);
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sanitizeToolStripMenuItem,
+            this.ShowContextMenu,
+            this.s,
+            this.ExitContextMenu});
+            this.contextMenuStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Table;
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.contextMenuStrip.ShowImageMargin = false;
+            this.contextMenuStrip.Size = new System.Drawing.Size(128, 98);
+            // 
+            // ShowContextMenu
+            // 
+            this.ShowContextMenu.Name = "ShowContextMenu";
+            this.ShowContextMenu.Size = new System.Drawing.Size(127, 22);
+            this.ShowContextMenu.Text = "Show";
+            this.ShowContextMenu.Click += new System.EventHandler(this.ShowContextMenu_Click);
+            // 
+            // s
+            // 
+            this.s.Name = "s";
+            this.s.Size = new System.Drawing.Size(124, 6);
+            // 
+            // ExitContextMenu
+            // 
+            this.ExitContextMenu.Name = "ExitContextMenu";
+            this.ExitContextMenu.Size = new System.Drawing.Size(127, 22);
+            this.ExitContextMenu.Text = "Exit";
+            this.ExitContextMenu.Click += new System.EventHandler(this.ExitContextMenu_Click);
+            // 
+            // sanitizeToolStripMenuItem
+            // 
+            this.sanitizeToolStripMenuItem.Name = "sanitizeToolStripMenuItem";
+            this.sanitizeToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.sanitizeToolStripMenuItem.Text = "Sanitize";
+            this.sanitizeToolStripMenuItem.Click += new System.EventHandler(this.sanitizeToolStripMenuItem_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -153,6 +209,7 @@
             this.Activated += new System.EventHandler(this.MainWindow_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.MainWindow_Load);
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,6 +225,12 @@
         private System.Windows.Forms.CheckBox TopToggle;
         private System.Windows.Forms.CheckBox grabOnFocusCheckBox;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem ExitContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem ShowContextMenu;
+        private System.Windows.Forms.ToolStripSeparator s;
+        private System.Windows.Forms.ToolStripMenuItem sanitizeToolStripMenuItem;
     }
 }
 
